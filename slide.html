@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      #demo {
+        background-color: pink;
+        width: 200px;
+        height: 500px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>slide toggle</button>
+    <p id="demo">
+      hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
+      univercity kolhapur with fist class .
+    </p>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $("p").slideToggle("slow");
+      });
+    });
+  </script>
+</html>

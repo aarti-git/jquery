@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style tyep="text/css">
+      .parent1 {
+        width: 500px;
+        height: 200px;
+        border: 1px solid;
+        background-color: pink;
+      }
+      .parent2 {
+        width: 500px;
+        height: 200px;
+        border: 1px solid;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>this is for empty</h1>
+    <div class="parent1">
+      <p>
+        hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
+        univercity kolhapur with fist class .
+      </p>
+      <ul>
+        <li>iam</li>
+        <li>aarti</li>
+      </ul>
+    </div>
+    <button id="btn1">click me</button>
+    <!--  -->
+    <h1>this is for remove</h1>
+    <div class="parent2">
+      <p>
+        hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
+        univercity kolhapur with fist class .
+      </p>
+      <ul>
+        <li>iam</li>
+        <li>aarti</li>
+      </ul>
+    </div>
+    <button id="btn2">click me</button>
+    <script>
+      $(document).ready(function () {
+        $("#btn1").click(function () {
+          $(".parent1").empty();
+        });
+        //
+        $("#btn2").click(function () {
+          $(".parent2").remove();
+        });
+      });
+    </script>
+  </body>
+</html>

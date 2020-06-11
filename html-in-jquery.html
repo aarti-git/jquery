@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="orderList">click me</button>
+    <ol>
+      <li>aarti</li>
+      <li>yogesh</li>
+    </ol>
+    <button id="unorderList">click me</button>
+    <ul>
+      <li>iam</li>
+      <li>aarti</li>
+    </ul>
+    <script>
+      $(document).ready(function () {
+        //   this is for append in order list
+        $("#orderList").click(function () {
+          $("ol").append("<li>jagdale</li>");
+        });
+        //   this is for prepend in unorder list
+
+        $("#unorderList").click(function () {
+          $("ul").prepend("<li>i am yogesh</li>");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button>im toggel</button>
+    <div id="toggel-text">
+      <h1>display and hide using toggel</h1>
+    </div>
+    <script>
+      // this is using javascript
+      //   var isClike = false;
+      //   function toggelMe() {
+      //     var myText = document.getElementById("toggel-text");
+      //     if (isClike == false) {
+      //       myText.style.display = "none";
+      //       isClike = true;
+      //     } else {
+      //       myText.style.display = "block";
+      //       isClike = false;
+      //     }
+      //   }
+
+      //   using jquery
+
+      $(document).ready(function () {
+        $("button").click(function () {
+          $("#toggel-text").toggle(1000);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>
+      hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
+      univercity kolhapur with fist class .
+    </p>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $("p").on({
+        mouseenter: function () {
+          $(this).css("backgroundColor", "pink");
+          $(this).css("color", "white");
+        },
+
+        mouseleave: function () {
+          $(this).css("backgroundColor", "yellow");
+          $(this).css("color", "black");
+        },
+
+        click: function () {
+          alert("hii..iam alert !!");
+        },
+      });
+    });
+  </script>
+</html>
