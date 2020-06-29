@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
   </head>
   <body>
     <button>im toggel</button>
@@ -9,7 +9,15 @@
       <h1>display and hide using toggel</h1>
     </div>
     <script>
-      // this is using javascript
+      //   using jquery
+
+      $(document).ready(function () {
+        $("button").click(function () {
+          $("#toggel-text").toggle(1000);
+        });
+      });
+
+       // this is using javascript
       //   var isClike = false;
       //   function toggelMe() {
       //     var myText = document.getElementById("toggel-text");
@@ -22,13 +30,6 @@
       //     }
       //   }
 
-      //   using jquery
-
-      $(document).ready(function () {
-        $("button").click(function () {
-          $("#toggel-text").toggle(1000);
-        });
-      });
     </script>
   </body>
 </html>

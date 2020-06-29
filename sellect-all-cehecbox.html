@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <style type="text/css">
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="checkbox" id="sellectAll" />sellect all<br />
+    <hr />
+    <input type="checkbox" id="checkItem" />Item 2<br />
+    <input type="checkbox" id="checkItem" />Item3<br />
+    <input type="checkbox" id="checkItem" />Item4 <br />
+    <script>
+      $("#sellectAll").click(function () {
+        $("input:checkbox").not(this).prop("checked", this.checked);
+      });
+    </script>
+  </body>
+</html>

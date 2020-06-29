@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="./js/jquery.min.js"></script>  </head>
-
+    <script src="./js/jquery.min.js"></script>
+  </head>
   <body>
+    <h2>i iam HTML ...</h2>
     <button>click me</button>
     <script>
       $(document).ready(function () {
         $("button").click(function () {
-          alert("my first jquery !!");
+          $("h2").load("test.txt", function () {
+            alert("change is done !!");
+          });
         });
       });
     </script>

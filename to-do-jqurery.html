@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>todo using jquery</title>
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="fontcss/fontawesome.css" />
+    <style type="text/css">
+      * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+
+      .todo-wrapper {
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #e0a8a842;
+        height: auto;
+      }
+
+      .todo-wrapper h1 {
+        font-size: 30px;
+        color: pink;
+        padding: 50px 0;
+      }
+      .wrapper {
+        width: 550px;
+        margin: 0 auto;
+      }
+
+      .input-wrapper {
+        position: relative;
+      }
+
+      .down-button {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        font-size: 25px;
+        width: 35px;
+        height: 35px;
+        background-color: transparent;
+        color: pink;
+        outline: none;
+      }
+
+      .input {
+        width: 100%;
+        height: 60px;
+        padding: 15px 50px;
+        font-size: 23px;
+        border-bottom: 1px solid #e0a8a842;
+        text-align: justify;
+      }
+      .list-structure {
+        width: 100%;
+        height: 60px;
+        padding: 15px 40px;
+        font-size: 23px;
+        border-bottom: 1px solid #e0a8a842;
+        text-align: justify;
+      }
+
+      #ULlist {
+        width: 100%;
+        height: 60px;
+        margin: 0 auto;
+        text-align: center;
+        height: auto;
+      }
+
+      /* js class */
+      .list-design:hover .removeBtn {
+        display: block;
+        border-radius: 50%;
+        background-color: #d88b8b8c;
+      }
+
+      .list-design {
+        background-color: white;
+        border-radius: 10px;
+        list-style: none;
+      }
+
+      .list-checkbox {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 20px;
+      }
+
+      .removeBtn {
+        width: 25px;
+        height: 25px;
+        float: right;
+        font-size: 20px;
+        background-color: white;
+        outline: none;
+        display: none;
+      }
+
+      .todo-footer-section {
+        display: none;
+      }
+
+      .todo-footer {
+        display: none;
+        width: 100%;
+        height: 45px;
+        display: inline-block;
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-align: start;
+      }
+
+      .todo-footer button {
+        width: auto;
+        height: 25px;
+        font-size: 15px;
+        color: #c1b8b5;
+        background-color: white;
+        padding: 0px 8px;
+        outline: none;
+        border: 1px solid transparent;
+      }
+
+      .todo-footer button.--active {
+        color: #fff;
+        background-image: linear-gradient(to bottom, royalblue, #2049c6);
+        border-color: #053bde;
+        border-radius: 2px;
+      }
+      .todo-footer button.--active:active {
+        background-image: linear-gradient(to top, royalblue, #2049c6);
+      }
+
+      .items {
+        margin-right: 35px;
+      }
+
+      .clear-btn {
+        display: none;
+      }
+
+      .about-todo {
+        color: #b7b5b5;
+        padding: 30px 0 60px 0;
+      }
+
+      .checkcss {
+        opacity: 0.2;
+        text-decoration: line-through;
+      }
+
+      .btn:hover {
+        border-color: #2049c6;
+      }
+
+      .getClearBtnCss {
+        display: inline-block;
+        border: 1px solid #2049c6;
+      }
+
+      #ancher-complet-all {
+        display: none;
+      }
+
+      .complet-all-clickbtn {
+        color: grey;
+        border: 1px solid #2049c6;
+        padding: 3px;
+        font-size: 14px;
+      }
+
+      .checked-Text {
+        color: #c1b8b7;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="todo-wrapper">
+      <h1>todo (note List)</h1>
+      <section class="wrapper">
+        <div class="input-wrapper">
+          <button class="down-button">v</button>
+          <input type="text" name="" placeholder="text" class="input" />
+        </div>
+        <div>
+          <ul id="ULlist"></ul>
+        </div>
+        <!--  -->
+        <section class="todo-footer-section">
+          <div class="todo-footer">
+            <button class="items">items left</button>
+            <button class="btn --active allList">
+              All
+            </button>
+            <button class="btn activeList">
+              Active
+            </button>
+            <button class="btn completList">
+              completed
+            </button>
+            <button class="clear-btn">
+              clear competed
+            </button>
+            <!-- <a id="ancher-complet-all">Complete All</a> -->
+          </div>
+        </section>
+      </section>
+      <section class="about-todo">
+        <p>Double-click to edit todo</p>
+        <p>creat by Sinder Sortus</p>
+        <p>part todoMVC</p>
+      </section>
+    </section>
+    <!-- scripting in jquery -->
+    <script>
+      $(document).ready(function () {
+        const mainList = $("#ULlist");
+        const footer = $(".todo-footer-section");
+
+        let counter = 0;
+        let currentListStat = "all";
+
+        // sellect all checkbox
+        let a = false;
+        $(".down-button").click(function () {
+          // <condition> ? <if true> : <if false>
+          // console.log(1);
+          a = a ? false : true;
+          $("input:checkbox").prop("checked", a);
+          $(".clear-btn").css("display", "inline-block");
+          $("li").each(function () {
+            if (a == false) {
+              $(this).removeClass("checked-Text");
+            } else {
+              $(this).addClass("checked-Text");
+            }
+          });
+        });
+
+        // clear completly
+        $(".clear-btn").click(function () {
+          mainList.find("input:checkbox").each(function () {
+            if (this.checked) {
+              $(this).parent().remove();
+              counter = counter - 1;
+              $(".items").html(counter + "items left");
+
+              if (counter == 0) {
+                footer.css("display", "none");
+              }
+            }
+          });
+        });
+        // this event for all
+        $(".allList").click(function () {
+          currentListStat = "all";
+          mainList.find("input:checkbox").each(function () {
+            $(this).parent().show();
+          });
+        });
+
+        // this event  for active list
+        $(".activeList").click(function () {
+          currentListStat = "active";
+          mainList.find("input:checkbox").each(function () {
+            if (this.checked) {
+              $(this).parent().hide();
+            }
+          });
+        });
+
+        // this event  for complet list
+        $(".completList").click(function () {
+          currentListStat = "complet";
+          mainList.find("input:checkbox").each(function () {
+            if (this.checked) {
+              $(this).parent().show();
+            } else {
+              $(this).parent().hide();
+            }
+          });
+        });
+
+        // active element show
+        footer.find(".btn").click(function () {
+          $(".btn").removeClass("--active");
+          $(this).addClass("--active");
+        });
+
+        //   this code for enter
+        $(".input").keyup(function (event) {
+          var n = $(this).val();
+          // && n.lenght>0;
+          if (event.keyCode === 13 && n !== "") {
+            var list = $(
+              "<li>" + "<span id='listText'>" + n + "</span>" + "</li>"
+            );
+
+            mainList.append(list);
+            // list.appendTo("#ULlist");
+            list.addClass("list-structure list-design");
+            list.prepend("<input type='checkbox' class='list-checkbox'/>");
+            list.append("<button  class='removeBtn'>x</button>");
+
+            footer.css("display", "block");
+
+            // this code for counter
+            // we can also write : counter = counter + 1 -or- counter+=1
+            counter++;
+            $(".items").html(counter + "items left");
+
+            // this line code for  empty input
+            $(this).val("");
+            // add alclear button
+            $(".clear-btn").css("display", "inline-block");
+
+            // remove list
+            list.find(".removeBtn").click(function () {
+              list.fadeOut(function () {
+                this.remove(); // js
+                counter--;
+                $(".items").html(counter + "items left");
+                // footer remove
+                if (counter == 0) {
+                  footer.css("display", "none");
+                }
+              });
+            });
+
+            // this code for checbox class toggle
+            list.find("input:checkbox").click(function () {
+              list.toggleClass("checked-Text");
+            });
+
+            // Edit text in input
+            var listText = list.find("#listText");
+            listText.dblclick(function () {
+              var $this = $(this);
+              $this.html(
+                "<input type='text' value='" +
+                  $this.text() +
+                  "' id='editTextWord'>"
+              );
+
+              var editText = list.find("#editTextWord").focus();
+              editText.keyup(function (event) {
+                if (event.keyCode === 13) {
+                  console.log("hello");
+                  listText.html(editText.val());
+                  console.log("success");
+                }
+              });
+              console.log("hi");
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

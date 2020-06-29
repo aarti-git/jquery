@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
+    <script src="./js/jquery.min.js"></script>
+  <style>
       .design {
         background-color: pink;
         color: white;
@@ -26,11 +26,11 @@
         $("span").hide();
 
         $("input").focus(function () {
-          $("#welcome").show().fadeOut(2000);
+          $("#welcome").show().fadeOut(3000);
         });
 
         $("input").blur(function () {
-          $("#bye").show().fadeOut(2000);
+          $("#bye").show().fadeOut(3000);
         });
 
         $("button").click(function () {

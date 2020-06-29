@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
   </head>
   <body>
     <p>
-      hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
+      * hi iam aarti suryawanshi. i did my graduvation in B.A from shivaji
       univercity kolhapur with fist class .
     </p>
+    <button>click me</button>
   </body>
   <script>
     $(document).ready(function () {
       $("p").on({
         mouseenter: function () {
-          $(this).css("backgroundColor", "pink");
-          $(this).css("color", "white");
+          $(this).css({
+            backgroundColor: "pink",
+            color: "white",
+            padding: "10px",
+            fontSize: "20px",
+          });
         },
 
         mouseleave: function () {
-          $(this).css("backgroundColor", "yellow");
-          $(this).css("color", "black");
+          $(this).css({
+            backgroundColor: "yellow",
+            color: "black",
+            padding: "10px",
+            fontSize: "20px",
+          });
         },
 
         click: function () {
           alert("hii..iam alert !!");
+        },
+      });
+      // this is for button
+      $("button").on({
+        mouseenter: function () {
+          $(this).css({
+            backgroundColor: "blue",
+            color: "white",
+            padding: "8px 15px",
+          });
+        },
+        click: function () {
+          alert("you click successfully !!");
         },
       });
     });

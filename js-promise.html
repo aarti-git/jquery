@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+    <script>
+      function getData() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {
+            resolve("yogesh");
+          }, 1000);
+        });
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

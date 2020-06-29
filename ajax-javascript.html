@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <div id="text">
+      <h1>this is going to be change</h1>
+    </div>
+    <button onclick="loadText()">clicke me</button>
+    <script>
+      //   function loadText() {}
+      //   loadText("text");
+      function loadText() {
+        var xmljs = new XMLHttpRequest();
+        xmljs.onreadystatechange = function () {
+          if (xmljs.readyState == 4 && xmljs.status == 200) {
+            document.getElementById("text").innerHTML = xmljs.responseText;
+          }
+        };
+        xmljs.open("GET", "test.txt", true);
+        xmljs.send();
+      }
+    </script>
+  </body>
+</html>
+<!--  -->

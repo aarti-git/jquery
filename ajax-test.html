@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("#load-users").click(function () {
+          $("table").toggle();
+          //     $.get("/users.json").then(function (resp) {
+          //       $("table").find("tr").not(":first").remove();
+          //       // fetch user data and put in table
+          //       resp.users.forEach(function (user) {
+          //         $("table").append(`
+          //           <tr>
+          //             <td>${user}</td>
+          //           </tr>
+          //         `);
+          //       });
+          //     });
+          //   });
+          // });
+
+          $.get("/users.json", function (resp) {
+            // remove old rows
+            $("table").find("tr").not(":first").remove();
+            // fetch user data and put in table
+            resp.users.forEach(function (user) {
+              $("table").append(`
+                  <tr>
+                      <td>${user}</td>
+                  </tr>
+              `);
+            });
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Heading</h1>
+    <button id="load-users">Load users</button>
+
+    <table border="1px">
+      <tr>
+        <th>Names</th>
+      </tr>
+    </table>
+  </body>
+</html>
