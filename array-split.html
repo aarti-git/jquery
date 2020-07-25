@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      JavaScript | Split array into chunks.
+    </title>
+  </head>
+
+  <body id="body">
+    <p id="heading"></p>
+    <button onclick="pagination()">
+      1
+    </button>
+    <!-- <button onclick="pagination(2)">
+      2
+    </button>
+    <button onclick="pagination(3)">
+      3
+    </button>
+    <button onclick="pagination(4)">
+      4
+    </button> -->
+    <ul id="printHear"></ul>
+    <script>
+      var heading = document.getElementById("heading");
+      var printHear = document.querySelector("#printHear");
+      var chunk = 5;
+      var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+      heading.innerHTML = array;
+
+      function pagination() {
+        var array1 = array.splice(0, chunk);
+        var array2 = array.splice(0, chunk);
+        var array3 = array.splice(0, chunk);
+        printHear.innerHTML = array1 + " | " + array2 + " | " + array3;
+
+        // if (a == 1) {
+        //   var array1 = array.splice(0, chunk);
+        //   printHear.innerHTML = array1;
+        // } else if (a == 2) {
+        //   var array2 = array.splice(0, chunk);
+        //   printHear.innerHTML = array2;
+        // } else if (a == 3) {
+        //   var array3 = array.splice(0, chunk);
+        //   printHear.innerHTML = array3;
+        // } else {
+        //   var array4 = array.splice(0, chunk);
+        //   printHear.innerHTML = array4;
+        // }
+      }
+    </script>
+  </body>
+</html>
